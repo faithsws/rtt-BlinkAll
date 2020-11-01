@@ -1,4 +1,3 @@
-#ifdef PKG_USING_BLINKALL
 #include <rtthread.h>
 #include <rtdevice.h>
 #include <string.h>
@@ -349,4 +348,3 @@ static void blink_stop(uint8_t argc, char **argv)
 MSH_CMD_EXPORT(blink_stop, stop a blink device);
 #endif
 
-#endif

@@ -1,3 +1,4 @@
+#include <rtthread.h>
 #ifdef PKG_BLINKALL_USING_GPIO_EXAMPLE
 #include "blink_all.h"
 
@@ -9,6 +10,6 @@ static int blink_gpio()
 	blink_device_start("led1");
 	return 0;
 }
-INIT_APP_EXPORT(config_led);
-
+INIT_APP_EXPORT(blink_gpio);
 #endif
+
