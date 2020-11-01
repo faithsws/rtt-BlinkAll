@@ -1,3 +1,4 @@
+#ifdef PKG_USING_BLINKALL
 #include <rtthread.h>
 #include <rtdevice.h>
 #include <string.h>
@@ -212,6 +213,10 @@ rt_err_t blink_device_stop(const char* name)
 	return -RT_EINVAL;
 }
 
+#define BLINK_ALL_STACK_SIZE PKG_BLINKALL_THREAD_STACK_SIZE
+#define BLINK_ALL_PRIORITY	PKG_BLINKALL_THREAD_PRIORITY
+#define BLINK_UINT_MS PKG_BLINKALL_SCAN_UNIT_MS
+
 static void blink_tmr(void *p)
 {
 	rt_slist_t * l = RT_NULL;
@@ -284,8 +289,7 @@ static void blink_tmr(void *p)
 		rt_thread_mdelay(BLINK_UINT_MS);
 	}
 }
-#define BLINK_ALL_STACK_SIZE 1024
-#define BLINK_ALL_PRIORITY	30
+
 int blink_init()
 {
 	rt_mutex_init(&list_lock,"lslock",RT_IPC_FLAG_FIFO);
@@ -343,4 +347,6 @@ static void blink_stop(uint8_t argc, char **argv)
 	}
 }
 MSH_CMD_EXPORT(blink_stop, stop a blink device);
+#endif
+
 #endif
