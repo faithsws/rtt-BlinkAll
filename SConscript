@@ -5,8 +5,8 @@ from building import *
 cwd     = GetCurrentDir()
 src     = Glob('Src/blink_all.c') 
 
-if GetDepend(['PKG_BLINKALL_USING_EXAMPLE']):
-	src    += Glob('examples/blink_all_example.c') 
+if GetDepend(['PKG_BLINKALL_USING_GPIO_EXAMPLE']):
+     src += Glob('examples/blink_all_example.c') 
 
 CPPPATH = [cwd]
 CPPPATH += [cwd + '/Inc']
